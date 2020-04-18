@@ -42,7 +42,7 @@ python Main.py
 
 之后，尽情享受吧。
 
-![GPA Calculator Demo](https://gitee.com/pragmatism/GPA-Calculator/blob/master/demo.png)
+![GPA Calculator Demo](https://gitee.com/pragmatism/GPA-Calculator/raw/master/demo.png)
 
 * 双击表格中的项会弹出修改输入框
 * 红色斜体字代表任选课（不算绩点）
