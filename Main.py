@@ -129,6 +129,11 @@ def set_cell_value(event):  # double-click to edit the value
     for item in treeview.selection():
         item_text = treeview.item(item, 'values')
         current_value = str(item_text[cn - 1])  # outputs the value of the selected row
+    try:
+        item
+    except NameError:
+        # It also means the user has double-clicked the header column of the table. And it's after clicking "Add lesson".
+        return
     app = popUpEntry(value=current_value, col=cn)
     app.attributes('-toolwindow', 1)
     app.wm_attributes('-topmost', 1)            # always shows at top
