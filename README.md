@@ -1,4 +1,4 @@
-# GPA-Calculator
+﻿# GPA-Calculator
 一款基于正方教务系统的GPA计算器，带有图形界面
 
 ## 更新信息
@@ -14,6 +14,7 @@
   * [numpy](https://github.com/numpy/numpy)
   * [retry](https://github.com/invl/retry)
   * [School_Api](https://github.com/dairoot/school-api)
+  * [Pillow](https://github.com/python-pillow/Pillow)
 
 非常感谢你们伟大的工作！！非常感谢！！
 
