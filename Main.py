@@ -89,7 +89,10 @@ REVERSE = False
 def treeview_sort_column(tv, col, reverse):  # Treeview, column name, sort pattern
     global REVERSE
     REVERSE = not reverse
-    l = [(tv.set(k, col), k) for k in tv.get_children('')]
+    if col != columns[2] and col != columns[3]:
+        l = [(tv.set(k, col), k) for k in tv.get_children('')]
+    else:
+        l = list(map(lambda v: (change(v[0]), v[1]), [(tv.set(k, col), k) for k in tv.get_children('')]))
     l.sort(reverse=reverse)  # sort pattern
     # rearrange items in sorted positions
     for index, (val, k) in enumerate(l):  # move by sorted index
