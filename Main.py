@@ -175,9 +175,10 @@ def new_row():
     point.append(0.0)
     score.append('0.0')
     treeview.insert('', len(lesson_name) - 1, values=(term[-1], lesson_name[-1], credit[-1], score[-1]), tags=('common' if len(lesson_name) & 1 else 'gray', 'ITALIC' if lesson_name[-1] in Free_Electives else 'NORMAL'))
-    treeview.yview_moveto(1)  # scroll to the bottom
-    treeview.bind('<Double-1>', set_cell_value)
+    # Each time you want to scroll to the bottom. You may need to call .update() or .update_idletasks() first,
+    # to give treeview a chance to resize to its new contents. Don't reverse the order!
     treeview.update()
+    treeview.yview_moveto(1)  # scroll to the bottom
 
 
 treeview.bind('<Double-1>', set_cell_value)
@@ -282,8 +283,8 @@ def main():
 
     for i in range(min(len(term), len(lesson_name), len(credit), len(score))):
         treeview.insert('', i, values=(term[i], lesson_name[i], credit[i], score[i]), tags=('gray' if i & 1 else 'common', 'ITALIC' if lesson_name[i] in Free_Electives else 'NORMAL'))
-    treeview.yview_moveto(1)
-    treeview.update()
+    # treeview.update()
+    # treeview.yview_moveto(1)
     show_GPA.place(y=390)
     show_credit.place(x=60, y=425)
     newb.place(x=404, y=400)
