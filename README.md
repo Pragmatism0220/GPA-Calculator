@@ -2,6 +2,8 @@
 一款基于正方教务系统的GPA计算器，带有图形界面
 
 ## 更新信息
+**2020-04-21更新**：优化了批处理脚本；新增创建快捷方式的自动化批处理脚本。
+***
 **2020-04-20更新**：修复了“添加课程”后滚动条无法自动定位到底部的bug；修复了按“学分”排序和按“成绩”排序不准确的bug。
 ***
 **2020-04-19更新**：增加了可执行文件；将图标编码在了程序里，并内置了两种不同图标（主窗口图标和信息窗口图标）；以更优雅的方式修复了历史遗留的bug。
@@ -67,9 +69,15 @@ pause
 ```
 （类似地，使用`python3`代替`python`如果你的默认Python版本不是3的话。）之后，将其保存为“GPA计算器.bat”。这样，当你下次想要运行项目时，只需双击这个批处理脚本即可。**但是请注意，请务必将配置文件config.json和批处理脚本放在同一目录下！**
 
-但是批处理脚本会出现一个黑框的控制台，这不是我们想要的。因此我发布了通过[pyinstaller](https://github.com/pyinstaller/pyinstaller)打包的exe可执行文件。**同样地，请将配置文件config.json和exe可执行文件放在同一目录下！**
+但是批处理脚本会出现一个黑框的控制台，这不是我们想要的。因此，我们使用`pythonw`代替`python`命令，该命令可以隐藏console窗口。然后使用`start`命令启动即可，如下：
+```bat
+@echo off
+start pythonw Main.py
+```
 
-之后，如果想更改路径，建议将你的批处理脚本或可执行文件“右键→复制→粘贴快捷方式”，到任意目录。即：通过快捷方式进行访问调用。
+此外，我还发布了通过[pyinstaller](https://github.com/pyinstaller/pyinstaller)打包的exe可执行文件。**同样地，请将配置文件config.json和exe可执行文件放在同一目录下！**
+
+之后，如果想更改路径，建议将你的批处理脚本或可执行文件“右键→复制→粘贴快捷方式”，到任意目录。即：通过快捷方式进行访问调用。**我也提供了两个自动在桌面创建快捷方式的批处理脚本，双击运行即可。但是要将`calculator.ico`这个图标文件和自动创建桌面快捷方式的批处理脚本放在同一个目录下！**（注：该脚本以gbk编码。）
 
 ### 如何使用[pyinstaller](https://github.com/pyinstaller/pyinstaller)打包
 本项目依赖于正方教务系统的接口，即[School_Api](https://github.com/dairoot/school-api)项目。但是pyinstaller中并没有包含school-api的钩子模块（hook module）。因此若要使用pyinstaller打包，必须先自行实现school-api的钩子模块。
